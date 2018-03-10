@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import api from '../api/wp.js';
+import wpAPI from '../api/wp.js';
 export default class App extends Component {
 	
 	constructor(props) {
@@ -12,16 +12,16 @@ export default class App extends Component {
 	}
 	
 
-		componentDidMount() {
-    	api.site.getInfo(res => {
-            this.setState({siteInfo: res,isLoaded:true})
-        });
-        api.posts.getList(res => {
-            this.setState({items: res})
-        });
+	componentDidMount() {
+		wpAPI.site.getInfo(res => {
+			this.setState({siteInfo: res,isLoaded:true})
+		});
+		wpAPI.posts.getList(res => {
+			this.setState({items: res})
+		});
 
 
-  }
+	}
 
 
 
@@ -33,15 +33,15 @@ export default class App extends Component {
 		} else {
 			return (
 
-				<ul>
-				<h1>{siteInfo.name}</h1>
-				{items.map(item => (
-					<li key={item.title.rendered}>
-					{item.title.rendered} {item.date}
-					</li>
-					))}
-					</ul>
-					);
+			<ul>
+			<h1>{siteInfo.name}</h1>
+			{items.map(item => (
+				<li key={item.title.rendered}>
+				{item.title.rendered} {item.date}
+				</li>
+				))}
+				</ul>
+				);
 			}
 		}
 	}

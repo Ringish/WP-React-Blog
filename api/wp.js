@@ -1,6 +1,8 @@
-const baseUrl = 'http://174.138.5.191/?rest_route=/';
+import wpAuth from '../api/auth/wp.js';
 
-const api = {
+const baseUrl = wpAuth.baseUrl;
+
+const wpAPI = {
   site: {
      getInfo(handleResponse) {
       fetch(baseUrl)
@@ -34,4 +36,4 @@ const api = {
   },
 };
 
-export default api;
+export default wpAPI;
