@@ -1,47 +1,83 @@
 import React, {Component} from 'react';
 import wpAPI from '../api/wp.js';
-export default class App extends Component {
+import { connect } from 'react-redux'
+import {
+	selectCategory,
+	fetchPostsIfNeeded
+} from '../actions'
+
+import Post from '../components/Post'
+
+
+
+class App extends Component {
 	
 	constructor(props) {
-		super(props);
-		this.state = {
-			isLoaded: false,
-			items: [],
-			siteInfo:null
-		};
+		super(props)
 	}
 	
 
 	componentDidMount() {
-		wpAPI.site.getInfo(res => {
-			this.setState({siteInfo: res,isLoaded:true})
-		});
-		wpAPI.posts.getList(res => {
-			this.setState({items: res})
-		});
+		const { dispatch, selectedCategory } = this.props
+		dispatch(fetchPostsIfNeeded(selectedCategory))
+	}
 
-
+	componentDidUpdate(prevProps) {
+		if (this.props.selectedCategory !== prevProps.selectedCategory) {
+			const { dispatch, selectedCategory } = this.props
+			dispatch(fetchPostsIfNeeded(selectedCategory))
+		}
 	}
 
 
 
 	render() {
-		const { isLoaded, items, siteInfo } = this.state;
+		const { selectedCategory, posts, isFetching, lastUpdated } = this.props
+		return (
+      <div>
+        
+        <p>
+          {lastUpdated &&
+            <span>
+              Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
+              {' '}
+            </span>}
+          {!isFetching &&
+            <a href="#" onClick={this.handleRefreshClick}>
+              Refresh
+            </a>}
+        </p>
+        {isFetching && posts.length === 0 && <h2>Loading...</h2>}
+        {!isFetching && posts.length === 0 && <h2>Empty.</h2>}
+        {posts.length > 0 &&
+          <div style={{ opacity: isFetching ? 0.5 : 1 }}>
+            {posts.map(item => (
+					<Post postId={item.id}>{item.title.rendered}</Post>
+					))}
+          </div>}
+      </div>
+    )
+	
+}
+}
 
-		if (!isLoaded) {
-			return <div>Loading...</div>;
-		} else {
-			return (
-
-			<ul>
-			<h1>{siteInfo.name}</h1>
-			{items.map(item => (
-				<li key={item.title.rendered}>
-				{item.title.rendered} {item.date}
-				</li>
-				))}
-				</ul>
-				);
-			}
-		}
-	}
+function mapStateToProps(state) {
+  const { selectedCategory, postsByCategory } = state
+  const {
+    isFetching,
+    lastUpdated,
+    items: posts
+  } = postsByCategory[selectedCategory] || {
+    isFetching: true,
+    items: []
+  }
+ 
+  return {
+    selectedCategory,
+    posts,
+    isFetching,
+    lastUpdated
+  }
+}
+ 
+export default connect(mapStateToProps)(App)

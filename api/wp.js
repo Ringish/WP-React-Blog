@@ -15,16 +15,14 @@ const wpAPI = {
     },
   },
   posts: {
+    listUrl: `${baseUrl}wp/v2/posts`,
      getList(handleResponse) {
       fetch(`${baseUrl}wp/v2/posts`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          handleResponse(result);
-        });
+      .then(res => res.json());
 
     },
-     getSingle(id,handleResponse) {
+    singleUrl: `${baseUrl}wp/v2/posts`,
+     getSingle(id) {
       fetch(`${baseUrl}/wp/v2/posts/${id}`)
       .then(res => res.json())
       .then(
