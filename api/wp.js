@@ -13,6 +13,7 @@ const wpAPI = {
           });
 
     },
+    topMenuUrl: `${baseUrl}wp-api-menus/v2/menu-locations/top`
   },
   posts: {
     listUrl: `${baseUrl}wp/v2/posts`,

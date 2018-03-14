@@ -6,6 +6,7 @@ import {
 	fetchPostsIfNeeded
 } from '../actions'
 
+import Header from '../components/Header'
 import Post from '../components/Post'
 
 
@@ -35,6 +36,7 @@ class App extends Component {
 		const { selectedCategory, posts, isFetching, lastUpdated } = this.props
 		return (
       <div>
+      <Header />
         
         <p>
           {lastUpdated &&

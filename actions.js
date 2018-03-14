@@ -5,30 +5,16 @@ export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 
 export const FETCH_POST = 'FETCH_POST';
+export const MENU = 'MENU';
 
 export function fetchPost(id) {
   return function (dispatch) {
-
-
-     
-    // The function called by the thunk middleware can return a value,
-    // that is passed on as the return value of the dispatch method.
-     
-    // In this case, we return a promise to wait for.
-    // This is not required by thunk middleware, but it is convenient for us.
     return fetch(wpAPI.posts.singleUrl+id)
     .then(
       response => response.json(),
-        // Do not use catch, because that will also catch
-        // any errors in the dispatch and resulting render,
-        // causing a loop of 'Unexpected batch number' errors.
-        // https://github.com/facebook/react/issues/6895
         error => console.log('An error occurred.', error)
         )
     .then(json =>
-        // We can dispatch many times!
-        // Here, we update the app state with the results of the API call.
-         
         dispatch({
           type: FETCH_POST,
           data: json
@@ -36,6 +22,23 @@ export function fetchPost(id) {
         )
   }
 }
+
+export function getMenu(menu) {
+  return function (dispatch) {
+    return fetch(wpAPI.site.topMenuUrl)
+    .then(
+      response => response.json(),
+        error => console.log('An error occurred.', error)
+        )
+    .then(json =>
+        dispatch({
+          type: MENU,
+          data: json
+        })
+        )
+  }
+}
+
 
 export function selectCategory(category) {
   return {

@@ -3,7 +3,8 @@ import {
   SELECT_CATEGORY,
   REQUEST_POSTS,
   RECEIVE_POSTS,
-  FETCH_POST
+  FETCH_POST,
+  MENU
 } from './actions.js'
 
 function selectedCategory(state = 'all', action) {
@@ -59,11 +60,19 @@ function singlePost(state = {}, action) {
     }
     return state
 }
+function menu(state = {}, action) {
+  switch (action.type) {
+    case MENU:
+      return action.data;
+    }
+    return state
+}
 
 const rootReducer = combineReducers({
   postsByCategory,
   selectedCategory,
-  singlePost
+  singlePost,
+  menu
 })
  
 export default rootReducer
