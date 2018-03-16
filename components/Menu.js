@@ -11,7 +11,7 @@ class Menu extends Component {
   
   componentWillReceiveProps(nextProps) {
     console.log(nextProps.menu,this.props.menu);
-    if (this.props.menu !== nextProps.menu) {
+    if (!this.props.menu) {
       this.props.getMenu();
     }
   }
@@ -23,18 +23,21 @@ class Menu extends Component {
         const { menu } = this.props
         console.log(menu)
         return (
-
           <div>
-
-          </div>
-          );
+           {menu.length > 0 &&
+          <div>
+          {menu.map(item => (
+            <a href={item.url.replace('http://174.138.5.191/','/')}>{item.title}</a>
+            ))}
+            </div>}
+            </div>
+            );
         }
       }
 
 
-function mapStateToProps(state) {
-    const {menu} = getMenu() || { menu: [] }
-    return {menu}
-}
+      function mapStateToProps({menu}) {
+        return {menu};
+      }
 
-export default connect(mapStateToProps, {getMenu})(Menu)
+      export default connect(mapStateToProps, {getMenu})(Menu)

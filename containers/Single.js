@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+
+
+import Header from '../components/Header'
 
 import {fetchPost} from '../actions.js';
 
@@ -21,15 +25,23 @@ class Single extends Component {
         console.log(singlePost)
         return (
           <div data-id={singlePost.id}>
-
+          <Header />
+          {singlePost.id &&
+          <article>
+          <h1>{singlePost.title.rendered}</h1>
+          <div class="post-content">
+            {ReactHtmlParser(singlePost.content.rendered)}
+          </div>
+          </article>
+        }
           </div>
           );
-        }
       }
+    }
 
 
-function mapStateToProps({singlePost}) {
-    return {singlePost};
-}
+    function mapStateToProps({singlePost}) {
+      return {singlePost};
+    }
 
-export default connect(mapStateToProps, {fetchPost})(Single)
+    export default connect(mapStateToProps, {fetchPost})(Single)

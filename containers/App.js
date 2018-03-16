@@ -34,6 +34,7 @@ class App extends Component {
 
 	render() {
 		const { selectedCategory, posts, isFetching, lastUpdated } = this.props
+    console.log(posts)
 		return (
       <div>
       <Header />
@@ -54,7 +55,7 @@ class App extends Component {
         {posts.length > 0 &&
           <div style={{ opacity: isFetching ? 0.5 : 1 }}>
             {posts.map(item => (
-					<Post postId={item.id}>{item.title.rendered}</Post>
+					<Post post={item}>{item.title.rendered}</Post>
 					))}
           </div>}
       </div>
