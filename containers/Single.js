@@ -22,15 +22,15 @@ class Single extends Component {
       }
       render() {
         const { singlePost } = this.props
-        console.log(singlePost)
+        console.log(singlePost[0])
         return (
           <div data-id={singlePost.id}>
           <Header />
-          {singlePost.id &&
+          {singlePost.length > 0 &&
           <article>
-          <h1>{singlePost.title.rendered}</h1>
+          <h1>{singlePost[0].title.rendered}</h1>
           <div class="post-content">
-            {ReactHtmlParser(singlePost.content.rendered)}
+            {ReactHtmlParser(singlePost[0].content.rendered)}
           </div>
           </article>
         }

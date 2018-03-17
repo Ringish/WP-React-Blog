@@ -22,7 +22,7 @@ const wpAPI = {
       .then(res => res.json());
 
     },
-    singleUrl: `${baseUrl}wp/v2/posts?slug=`,
+    singleUrl: `${baseUrl}wp/v2/posts&slug=`,
      getSingle(id) {
       fetch(`${baseUrl}/wp/v2/posts/${id}`)
       .then(res => res.json())
