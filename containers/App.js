@@ -9,6 +9,7 @@ import {
 import Header from '../components/Header'
 import Post from '../components/Post'
 
+import '../App.scss';
 
 
 class App extends Component {
@@ -39,17 +40,7 @@ class App extends Component {
       <div>
       <Header />
         
-        <p>
-          {lastUpdated &&
-            <span>
-              Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
-              {' '}
-            </span>}
-          {!isFetching &&
-            <a href="#" onClick={this.handleRefreshClick}>
-              Refresh
-            </a>}
-        </p>
+
         {isFetching && posts.length === 0 && <h2>Loading...</h2>}
         {!isFetching && posts.length === 0 && <h2>Empty.</h2>}
         {posts.length > 0 &&

@@ -7,20 +7,22 @@ var parentDir = path.join(__dirname, '../');
 
 module.exports = {
     entry: [
-        path.join(parentDir, 'index.js')
+    path.join(parentDir, 'index.js')
     ],
     module: {
         // Loaders and compiler rules
         rules: [{
             test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
-            },{
-                test: /\.less$/,
-                loaders: ["style-loader", "css-loder", "less-loader"]
-            }
-        ]
-    },
+            exclude: /node_modules/,
+            loader: 'babel-loader'
+        },
+        {
+          test: /\.scss$/,
+          include: path.appSrc,
+          loaders: ["style-loader", "css-loader", "sass-loader"]
+      },
+      ]
+  },
     // Output of the bundle.js
     output: {
         path: parentDir + '/dist',
