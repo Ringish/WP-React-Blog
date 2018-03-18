@@ -1,0 +1,10 @@
+body {
+	font-family: 'PT Sans', sans-serif;
+}
+
+.container {
+	position:relative;
+	width:100%;
+	max-width:$container-max-width;
+	margin:0 auto;
+}

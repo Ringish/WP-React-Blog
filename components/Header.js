@@ -23,10 +23,10 @@ export default class Header extends Component {
 		const { siteInfo } = this.state;
 
 			return (
-				<div>
-			<h1>Föreningsdemokrati</h1>
+				<header className="main-header container">
+			<h1 class="logo">Föreningsdemokrati</h1>
 			<Menu></Menu>
-			</div>
+			</header>
 				);
 			}
 	}

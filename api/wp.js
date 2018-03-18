@@ -16,13 +16,13 @@ const wpAPI = {
     topMenuUrl: `${baseUrl}wp-api-menus/v2/menu-locations/top`
   },
   posts: {
-    listUrl: `${baseUrl}wp/v2/posts`,
+    listUrl: `${baseUrl}wp/v2/posts&_embed`,
      getList(handleResponse) {
       fetch(`${baseUrl}wp/v2/posts`)
       .then(res => res.json());
 
     },
-    singleUrl: `${baseUrl}wp/v2/posts&slug=`,
+    singleUrl: `${baseUrl}wp/v2/posts&_embed=true&slug=`,
      getSingle(id) {
       fetch(`${baseUrl}/wp/v2/posts/${id}`)
       .then(res => res.json())

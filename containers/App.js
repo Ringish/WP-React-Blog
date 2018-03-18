@@ -44,11 +44,11 @@ class App extends Component {
         {isFetching && posts.length === 0 && <h2>Loading...</h2>}
         {!isFetching && posts.length === 0 && <h2>Empty.</h2>}
         {posts.length > 0 &&
-          <div style={{ opacity: isFetching ? 0.5 : 1 }}>
+          <main className="posts container">
             {posts.map(item => (
 					<Post post={item}>{item.title.rendered}</Post>
 					))}
-          </div>}
+          </main>}
       </div>
     )
 	

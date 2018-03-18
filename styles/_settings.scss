@@ -1,0 +1,15 @@
+$black: #000;
+
+$primary-color: $black;
+$accent-color: lighten($primary-color,50%);
+$secondary-color: lighten($primary-color,85%);
+
+$link-color: $primary-color;
+
+$container-max-width: 1000px;
+
+$nav-font-size: 12px;
+$nav-color: $accent-color;
+
+
+$medium-down: 768px;

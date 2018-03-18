@@ -22,15 +22,17 @@ class Single extends Component {
       }
       render() {
         const { singlePost } = this.props
-        console.log(singlePost[0])
+        let post = singlePost[0]
         return (
           <div data-id={singlePost.id}>
           <Header />
+
           {singlePost.length > 0 &&
-          <article>
-          <h1>{singlePost[0].title.rendered}</h1>
+          <article className="single-post container">
+          {post._embedded['wp:featuredmedia']  && <img className="featured-image" src={post._embedded['wp:featuredmedia'][0].source_url} />}
+          <h1>{post.title.rendered}</h1>
           <div class="post-content">
-            {ReactHtmlParser(singlePost[0].content.rendered)}
+            {ReactHtmlParser(post.content.rendered)}
           </div>
           </article>
         }
