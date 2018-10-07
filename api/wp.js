@@ -23,8 +23,8 @@ const wpAPI = {
 
     },
     singleUrl: `${baseUrl}wp/v2/posts&_embed=true&slug=`,
-     getSingle(id) {
-      fetch(`${baseUrl}/wp/v2/posts/${id}`)
+     getSingle(id,handleResponse) {
+      fetch(baseUrl+'wp/v2/posts&_embed=true&slug='+id)
       .then(res => res.json())
       .then(
         (result) => {
@@ -33,6 +33,35 @@ const wpAPI = {
 
     },
   },
+  pages: {
+    listUrl: `${baseUrl}wp/v2/pages&_embed`,
+     getList(handleResponse) {
+      fetch(`${baseUrl}wp/v2/pages`)
+      .then(res => res.json());
+
+    },
+    singleUrl: `${baseUrl}wp/v2/pages&_embed=true&slug=`,
+     getSingle(id) {
+      fetch(`${baseUrl}/wp/v2/pages/${id}`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          handleResponse(result);
+        });
+
+    },
+  },
+  categories: {
+    listUrl: `${baseUrl}wp/v2/categories`,
+     getList(handleResponse) {
+      fetch(`${baseUrl}wp/v2/categories`)
+      .then(res => res.json());
+
+    },
+  },
+  badges: {
+    listUrl: `${baseUrl}wp/v2/badge&per_page=100`
+  }
 };
 
 export default wpAPI;

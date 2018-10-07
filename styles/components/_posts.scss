@@ -1,21 +1,28 @@
 .posts {
 	display:flex;
 	flex-flow:wrap row;
-	justify-content:space-between;
+	//justify-content:space-around;
 	article.post {
 		border:1px solid $secondary-color;
 		border-radius:2px;
 		width:32%;
-		margin:0.666% 0;
+		margin:0.666%;
 		display: flex;
 		flex-direction: column;
+		position:relative;
+		&.post-118,&.post-121 {
+			display:none;
+		}
+		&.hide {
+			display:none;
+		}
 		@media screen and (max-width:$medium-down) {
 			width:100%;
 		}
 		.img-holder {
 			background:$secondary-color;
 			width:100%;
-			padding-top:25%;
+			padding-top:50%;
 			overflow:hidden;
 			position:relative;
 		}
@@ -23,7 +30,8 @@
 			max-width: 100%;
 			height:auto;
 			position:absolute;
-			top:0;
+			top:50%;
+			transform:translateY(-50%);
 		}
 		.post-title,.excerpt,.post-info {
 			padding:0 10px;
@@ -54,6 +62,25 @@
 			display: inline-block;
 			vertical-align: middle;
 			margin-right:5px;
+		}
+		.badge-image {
+			max-width: 45px;
+			height: auto;
+			position: absolute;
+			top: -8px;
+			right: -8px;
+			max-height: 45px;
+			width: auto;
+			@media screen and (max-width:$medium-down) {
+				top:-2px;
+				right:-2px;
+			}
+		}
+		.link-more {
+			display:none;
+		}
+		.read-more {
+			margin-top:10px;
 		}
 	}
 }

@@ -3,11 +3,16 @@ import wpAPI from '../api/wp.js';
 import { connect } from 'react-redux'
 import {
 	selectCategory,
-	fetchPostsIfNeeded
+	fetchPostsIfNeeded,
+  selectedBadges
 } from '../actions'
 
 import Header from '../components/Header'
+import Menu from '../components/Menu'
+import Badges from '../components/Badges'
 import Post from '../components/Post'
+
+import Footer from '../components/Footer'
 
 import '../App.scss';
 
@@ -20,13 +25,19 @@ class App extends Component {
 	
 
 	componentDidMount() {
-		const { dispatch, selectedCategory } = this.props
+    console.log('app did mount');
+    console.log(this.props)
+    console.log('ya'+this.props.selectedBadges)
+		const { dispatch, selectedCategory, } = this.props
+    const selectedBadge = this.props.location.hash
+    dispatch(selectCategory('all'))
 		dispatch(fetchPostsIfNeeded(selectedCategory))
 	}
 
 	componentDidUpdate(prevProps) {
 		if (this.props.selectedCategory !== prevProps.selectedCategory) {
 			const { dispatch, selectedCategory } = this.props
+      const {selectedBadge} = this.props.location.hash
 			dispatch(fetchPostsIfNeeded(selectedCategory))
 		}
 	}
@@ -34,21 +45,25 @@ class App extends Component {
 
 
 	render() {
-		const { selectedCategory, posts, isFetching, lastUpdated } = this.props
-    console.log(posts)
+    console.log('app render');
+    console.log(this.props)
+		const { selectedCategory, posts, isFetching, lastUpdated, badges } = this.props
+    const selectedBadge = this.props.location.hash
 		return (
       <div>
       <Header />
-        
+      <Menu />
+        <Badges selectedBadge={selectedBadge} />
 
-        {isFetching && posts.length === 0 && <h2>Loading...</h2>}
-        {!isFetching && posts.length === 0 && <h2>Empty.</h2>}
+        {isFetching && posts.length === 0 && <main className="posts container"><h2>Laddar...</h2></main>}
+        {!isFetching && posts.length === 0 && <main className="posts container"><h2>Inga inlägg.</h2></main>}
         {posts.length > 0 &&
-          <main className="posts container">
+          <main  className="posts container ">
             {posts.map(item => (
-					<Post post={item}>{item.title.rendered}</Post>
+					<Post badges={badges} post={item} selectedBadge={selectedBadge}>{selectedBadge}</Post>
 					))}
           </main>}
+          <Footer />
       </div>
     )
 	
@@ -60,6 +75,7 @@ function mapStateToProps(state) {
   const {
     isFetching,
     lastUpdated,
+    badges,
     items: posts
   } = postsByCategory[selectedCategory] || {
     isFetching: true,
@@ -70,7 +86,8 @@ function mapStateToProps(state) {
     selectedCategory,
     posts,
     isFetching,
-    lastUpdated
+    lastUpdated,
+    badges
   }
 }
  

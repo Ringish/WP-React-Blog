@@ -4,13 +4,25 @@ import {
   REQUEST_POSTS,
   RECEIVE_POSTS,
   FETCH_POST,
-  MENU
+  MENU,
+  CATEGORIES,
+  BADGES,
+  SELECT_BADGES
 } from './actions.js'
 
 function selectedCategory(state = 'all', action) {
   switch (action.type) {
     case SELECT_CATEGORY:
       return action.category
+    default:
+      return state
+  }
+}
+
+function selectedBadges(state = {}, action) {
+  switch (action.type) {
+    case SELECT_BADGES:
+      return action.badge
     default:
       return state
   }
@@ -68,11 +80,30 @@ function menu(state = {}, action) {
     return state
 }
 
+function badges(state = {}, action) {
+  switch (action.type) {
+    case BADGES:
+      return action.data;
+    }
+    return state
+}
+
+function categories(state = {}, action) {
+  switch (action.type) {
+    case CATEGORIES:
+      return action.data;
+    }
+    return state
+}
+
 const rootReducer = combineReducers({
+  categories,
   postsByCategory,
   selectedCategory,
   singlePost,
-  menu
+  menu,
+  badges,
+  selectedBadges
 })
  
 export default rootReducer

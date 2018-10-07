@@ -1,13 +1,28 @@
 .single-post {
+	margin-top:35px;
+	margin-bottom:35px;
+	@media screen and (max-width:640px) {
+		padding:10px;
+	}
+	h1 {
+		font-size:40px;
+	}
+	p {
+		margin-bottom:1em;
+	}
 	.post-content {
 		font-size: 20px;
 		letter-spacing: 0.25px;
 		line-height: 1.6em;
 		color: rgba(0,0,0,0.85);
 		font-family: 'Open Sans';
+		word-wrap: break-word;
 	}
 	.featured-image {
 		max-width:100%;
 		height:auto;
+	}
+	.button {
+		margin-top:10px;
 	}
 }

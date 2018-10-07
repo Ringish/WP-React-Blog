@@ -1,0 +1,61 @@
+.badges {
+	@media screen and (max-width: 640px) {
+		&.filter-open {
+			position:absolute;
+			top:0;
+			height:100%;
+			z-index:999999;
+			background:#FFF;
+			ul {
+				height:100%;
+				align-content:center;
+				li {
+					display:block;
+				}
+			}
+		}
+	}
+	label {
+		font-weight:900;
+		@media screen and (min-width: 640px) {
+			&:after {
+				display:inline;
+				content:' på:';
+			}
+		}
+	}
+	ul {
+	list-style:none;
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	@media screen and (max-width: 640px) {
+		label {
+			background:$blue;
+			color:$yellow;
+			padding:10px;
+			letter-spacing:1px;
+			margin:15px auto;
+		}
+	}
+	li {
+		width:28px;
+		margin:5px;
+		@media screen and (max-width: 640px) {
+			display:none;
+		}
+		.selected img {
+			filter:none;
+			opacity:1;
+		}
+		img {
+			width:100%;
+			height:auto;
+			cursor:pointer;
+			opacity:0.8;
+			filter:grayscale(100);
+			transition:.2s;
+		}
+	}
+	}
+}

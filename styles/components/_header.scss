@@ -1,8 +1,24 @@
 .main-header {
-	text-align:center;
+	background-image:url('/images/header.jpg');
+	height:25vw;
+	position:relative;
+	background-attachment:fixed;
+	background-size:100%;
+	background-repeat:no-repeat;
+	margin-bottom:0;
 	.logo {
 		text-transform: uppercase;
 		font-size:18px;
 		letter-spacing: 5px;
+		color:$yellow;
+		text-decoration:none;
+		text-shadow: darken($blue,50%) 0px 0px 13px;
+		transition:.4s;
+		&:hover {
+			text-shadow: darken($blue,5%) 0px 0px 23px;
+		}
 	}
+}
+.inner-header {
+	padding:10px;
 }
