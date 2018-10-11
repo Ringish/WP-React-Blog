@@ -1,67 +1,70 @@
 .posts {
-	display:flex;
-	flex-flow:wrap row;
+	display: flex;
+	flex-flow: wrap row;
 	//justify-content:space-around;
 	article.post {
-		border:1px solid $secondary-color;
-		border-radius:2px;
-		width:32%;
-		margin:0.666%;
+		border: 1px solid $secondary-color;
+		border-radius: 2px;
+		width: 32%;
+		margin: 0.666%;
 		display: flex;
 		flex-direction: column;
-		position:relative;
-		&.post-118,&.post-121 {
-			display:none;
+		position: relative;
+		&.post-118,
+		&.post-121 {
+			display: none;
 		}
 		&.hide {
-			display:none;
+			display: none;
 		}
-		@media screen and (max-width:$medium-down) {
-			width:100%;
+		@media screen and (max-width: $medium-down) {
+			width: 100%;
 		}
 		.img-holder {
-			background:$secondary-color;
-			width:100%;
-			padding-top:50%;
-			overflow:hidden;
-			position:relative;
+			background: $secondary-color;
+			width: 100%;
+			padding-top: 50%;
+			overflow: hidden;
+			position: relative;
 		}
 		.featured-image {
 			max-width: 100%;
-			height:auto;
-			position:absolute;
-			top:50%;
-			transform:translateY(-50%);
+			height: auto;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
 		}
-		.post-title,.excerpt,.post-info {
-			padding:0 10px;
+		.post-title,
+		.excerpt,
+		.post-info {
+			padding: 0 10px;
 		}
 		.post-title {
-			margin-bottom:0.5em;
-			font-size:28px;
+			margin-bottom: 0.5em;
+			font-size: 28px;
 			a {
 				text-decoration: none;
 			}
 		}
 		.excerpt {
-			color:$primary-color;
-			font-size:12px;
+			color: $primary-color;
+			font-size: 12px;
 			letter-spacing: 0.25px;
-			line-height:1.8em;
+			line-height: 1.8em;
 			margin-bottom: 2em;
 			p {
-				margin:0;
+				margin: 0;
 			}
 		}
 		.post-info {
-			margin-top:auto;
-			margin-bottom:1em;
+			margin-top: auto;
+			margin-bottom: 1em;
 		}
 		.author-avatar {
-			border-radius:100%;
+			border-radius: 100%;
 			display: inline-block;
 			vertical-align: middle;
-			margin-right:5px;
+			margin-right: 5px;
 		}
 		.badge-image {
 			max-width: 45px;
@@ -71,16 +74,28 @@
 			right: -8px;
 			max-height: 45px;
 			width: auto;
-			@media screen and (max-width:$medium-down) {
-				top:-2px;
-				right:-2px;
+			@media screen and (max-width: $medium-down) {
+				top: -2px;
+				right: -2px;
 			}
 		}
 		.link-more {
-			display:none;
+			display: none;
 		}
 		.read-more {
-			margin-top:10px;
+			margin-bottom: 10px;
 		}
 	}
+}
+
+.post-info {
+	margin-top: auto;
+	margin-bottom: 1em;
+	font-size: 10px;
+}
+.author-avatar {
+	border-radius: 100%;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 5px;
 }

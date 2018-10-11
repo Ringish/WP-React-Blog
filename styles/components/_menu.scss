@@ -2,67 +2,85 @@
 	top: 0;
 	position: sticky;
 	width: 100%;
-	background:$blue;
-	z-index:9999;
-	margin-bottom:35px;
+	background: $blue;
+	z-index: 9999;
+	margin-bottom: 35px;
+	text-align: center;
+	.home {
+		color: $yellow;
+		font-weight: 900;
+		text-transform: uppercase;
+		text-decoration: none;
+		padding: 10px;
+		display: inline-block;
+		font-size: 20px;
+
+		@media screen and (max-width: 640px) {
+			position: absolute;
+			padding: 6px;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
 	@media screen and (max-width: 640px) {
-		padding:10px 0;
+		padding: 10px 0;
 	}
 	.toggle-menu {
-		display:none;
-		width:20px;
-		background:none;
-		border:none;
-		border-top:2px solid $yellow;
-		border-bottom:2px solid $yellow;
-		height:20px;
-		margin-left:15px;
-		position:relative;
+		display: none;
+		width: 20px;
+		background: none;
+		border: none;
+		border-top: 2px solid $yellow;
+		border-bottom: 2px solid $yellow;
+		height: 20px;
+		margin-left: 15px;
+		position: relative;
 		&:before {
-			content:'';
-			height:0;
-			border-bottom:2px solid $yellow;
-			width:100%;
-			position:absolute;
-			top:50%;
-			transform:translateY(-50%);
-			left:0;
+			content: "";
+			height: 0;
+			border-bottom: 2px solid $yellow;
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0;
 		}
 		&:focus {
-			outline:none;
+			outline: none;
 		}
 		@media screen and (max-width: 640px) {
-			display:block;
+			display: block;
 		}
 	}
 	ul {
-		list-style:none;
+		list-style: none;
 		display: flex;
-		justify-content:space-between;
-		padding:0;
+		justify-content: space-between;
+		padding: 0;
 		@media screen and (max-width: 640px) {
-			flex-direction:column;
-			max-height:0;
-			overflow:hidden;
-			transition:.2s;
+			flex-direction: column;
+			max-height: 0;
+			overflow: hidden;
+			transition: 0.2s;
 			&.nav-open {
-				max-height:5000px;
+				max-height: 5000px;
 			}
 		}
 		li {
 			a {
-				font-size:$nav-font-size;
+				font-size: $nav-font-size;
 				text-decoration: none;
 				text-transform: uppercase;
 				color: $nav-color;
 				letter-spacing: 0.05em;
-				padding:10px;
-				display:block;
-				font-weight:900;
-				transition:.2s;
+				padding: 10px;
+				display: block;
+				font-weight: 900;
+				transition: 0.2s;
 				&:hover {
 					color: $white;
-					background:darken($blue,20%);
+					background: darken($blue, 20%);
 				}
 			}
 		}
