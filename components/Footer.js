@@ -26,7 +26,7 @@ export default class Header extends Component {
 
 			<footer className="main-footer">
 			<div className="inner-footer">
-			<a href="http://sfsu.nu"><img src="../images/sfsu.png" /></a>
+			<a href="http://sfsu.nu"><img src="/images/sfsu.png" /></a>
 			</div>
 			</footer>
 			

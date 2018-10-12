@@ -71,7 +71,7 @@ class Single extends Component {
 						<a
 							className="button"
 							target="_blank"
-							href={"https://www.facebook.com/sharer/sharer.php?u=" + post.link}
+							href={"https://www.facebook.com/sharer/sharer.php?u=" + post.link.replace('http://sfsu.nu/foreningsdemokrati/','http://foreningsdemokrati.se/')}
 						>
 							Dela på Facebook
 						</a>{" "}
@@ -82,7 +82,7 @@ class Single extends Component {
 								"https://twitter.com/home?status=" +
 								ReactHtmlParser(post.title.rendered) +
 								"%20-%20" +
-								post.link
+								post.link.replace('http://sfsu.nu/foreningsdemokrati/','http://foreningsdemokrati.se/')
 							}
 						>
 							Dela på Twitter
